@@ -11,8 +11,6 @@
 ;
 ;======================================================================
 
-$Revision$
-
 
 d80x25_bottom:
            db       186,' KolibriOS wird ohne jegliche Garantie vertrieben. Details stehen in der      ',186

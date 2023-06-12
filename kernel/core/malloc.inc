@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision$
-
 
 ; Small heap based on malloc/free/realloc written by Doug Lea
 ; Version 2.8.3 Thu Sep 22 11:16:15 2005  Doug Lea  (dl at gee)

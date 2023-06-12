@@ -149,35 +149,31 @@ if ~ defined UEFI
   else
     file 'bootbios.bin'
   end if
-  if __REV__ > 0
-    cur_pos = 0
-    cnt = 0
-    repeat $ - bootbios
-      load a byte from %
-      if a = '*'
-        cnt = cnt + 1
-      else
-        cnt = 0
-      end if
-      if cnt = 4
-        cur_pos = % - 1
-        break
-      end if
-    end repeat
-    store byte ' ' at cur_pos + 1
-    rev_var = __REV__
-    while rev_var > 0
-      if rev_var mod 16 > 9
-        store byte rev_var mod 16 - 10 + 'a' at cur_pos
-      else
-        store byte rev_var mod 16 + '0' at cur_pos
-      end if
-      cur_pos = cur_pos - 1
-      rev_var = rev_var / 16
-    end while
-      store byte ' ' at cur_pos
-      store dword ' GIT' at cur_pos - 4
-  end if
+  virtual at 0
+    hash:: file "rev.inc":0,7
+  end virtual
+  cur_pos = 0
+  cnt = 0
+  repeat $ - bootbios
+    load a byte from %
+    if a = '*'
+      cnt = cnt + 1
+    else
+      cnt = 0
+    end if
+    if cnt = 4
+      cur_pos = % - 1
+      break
+    end if
+  end repeat
+  store byte ' ' at cur_pos + 1
+  repeat 7
+    load a byte from hash: 7 - %
+    store byte a at cur_pos
+    cur_pos = cur_pos - 1
+  end repeat
+  store byte ' ' at cur_pos
+  store dword ' GIT' at cur_pos - 4
 end if
 
 use32
@@ -788,10 +784,10 @@ end if
 
 
 ;-----------------------------------------------------------------------------
-; show SVN version of kernel on the message board
+; show GIT version of kernel on the message board
 ;-----------------------------------------------------------------------------
-        mov     eax, [version_inf.rev]
-        DEBUGF  1, "K : kernel SVN r%d\n", eax
+        mov     eax, version_inf.rev
+        DEBUGF  1, "K : kernel GIT %s\n", eax
 ;-----------------------------------------------------------------------------
 ; show CPU count on the message board
 ;-----------------------------------------------------------------------------
@@ -2471,8 +2467,7 @@ endg
 iglobal
 version_inf:
         db 0,7,7,0  ; version 0.7.7.0
-        db 0
-.rev    dd __REV__
+.rev    file "rev.inc":0,40
 .size = $ - version_inf
 endg
 ;------------------------------------------------------------------------------
@@ -4579,8 +4574,6 @@ diff16 "end of .text segment",0,$
 end if
 
 include "data32.inc"
-
-__REV__ = __REV
 
 if ~ lang eq sp
 diff16 "end of kernel code",0,$

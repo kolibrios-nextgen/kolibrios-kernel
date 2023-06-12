@@ -77,8 +77,6 @@ format binary as "mnt"
 include 'macros.inc'
 include 'struct.inc'
 
-$Revision$
-
 
 USE_COM_IRQ     = 1      ; make irq 3 and irq 4 available for PCI devices
 VESA_1_2_VIDEO  = 0      ; enable vesa 1.2 bank switch functions
@@ -169,12 +167,16 @@ if ~ defined UEFI
     store byte ' ' at cur_pos + 1
     rev_var = __REV__
     while rev_var > 0
-      store byte rev_var mod 10 + '0' at cur_pos
+      if rev_var mod 16 > 9
+        store byte rev_var mod 16 - 10 + 'a' at cur_pos
+      else
+        store byte rev_var mod 16 + '0' at cur_pos
+      end if
       cur_pos = cur_pos - 1
-      rev_var = rev_var / 10
+      rev_var = rev_var / 16
     end while
       store byte ' ' at cur_pos
-      store dword ' SVN' at cur_pos - 4
+      store dword ' GIT' at cur_pos - 4
   end if
 end if
 

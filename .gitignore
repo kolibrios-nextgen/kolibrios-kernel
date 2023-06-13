@@ -1,3 +1,5 @@
+# Global ignoring of different binaries and another temporary files
+
 *.mnt*
 *.raw
 *.iso

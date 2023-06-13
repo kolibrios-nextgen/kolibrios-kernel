@@ -1,0 +1,20 @@
+# Global attributes for forcing line endings normalization of specific files
+
+* text=auto
+
+# Sources
+*.asm text eol=lf encoding=utf-8
+*.asc text eol=lf encoding=utf-8
+*.inc text eol=lf encoding=utf-8
+
+# Scripts
+*.lua text eol=crlf encoding=utf-8
+*.py  text eol=crlf encoding=utf-8
+
+# Configs
+*.cfg text eol=crlf encoding=utf-8
+*.ini text eol=crlf encoding=utf-8
+
+# Assets
+*.cur binary
+*.fnt binary

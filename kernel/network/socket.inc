@@ -15,8 +15,6 @@
 ;;                                                                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 9917 $
-
 struct  SOCKET
 
         NextPtr                 dd ?    ; pointer to next socket in list

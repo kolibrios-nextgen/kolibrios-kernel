@@ -11,8 +11,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8111 $
-
 align 4
 system_shutdown:          ; shut down the system
 

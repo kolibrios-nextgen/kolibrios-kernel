@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 6876 $
-
 ; NTFS external functions
 ;   in:
 ; ebx -> parameter structure of sysfunc 70

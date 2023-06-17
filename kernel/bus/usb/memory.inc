@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8037 $
-
 ; Memory management for USB structures.
 ; Protocol layer uses the common kernel heap malloc/free.
 ; Hardware layer has special requirements:

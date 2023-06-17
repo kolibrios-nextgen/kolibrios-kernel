@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 5363 $
-
 
 ; Implementation of the USB protocol for device enumeration.
 ; Manage a USB device when it becomes ready for USB commands:

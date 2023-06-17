@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 6843 $
-
 search_partitions:
         push    ecx
 ; 1. Fill missing parameters in HD_DATA structures.

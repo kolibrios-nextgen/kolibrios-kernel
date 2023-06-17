@@ -11,8 +11,6 @@
 ;
 ;======================================================================
 
-$Revision: 7692 $
-
  
 d80x25_bottom:
           latin1   '║ KolibriOS on IGASUGUSE GARANTIITA. Vaata faili COPYING info saamiseks. Kui   ║'

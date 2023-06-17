@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8091 $
-
 
 read_ramdisk:
 ; READ RAMDISK IMAGE FROM HD (only for IDE0, IDE1, IDE2, IDE3)

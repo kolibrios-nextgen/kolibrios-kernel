@@ -7,8 +7,6 @@
 ;; Author: Halyavin Andrey, halyavin@land.ru                    ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 9715 $
-
 struct FRB
         list            LHEAD
         magic           rd 1

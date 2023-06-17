@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8175 $
-
 struc VBE_VGAInfo {
   .VESASignature          dd ?    ; char
   .VESAVersion            dw ?    ; short

@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 9910 $
-
 
 ;setting date,time,clock and alarm-clock
 ;add sys_settime at servetable as for ex. 22 fcn:

@@ -11,8 +11,6 @@
 ;
 ;======================================================================
 
-$Revision: 8224 $
-
 
 d80x25_bottom:
           db       186,' KolibriOS comes with ABSOLUTELY NO WARRANTY. See file COPYING for details    ',186

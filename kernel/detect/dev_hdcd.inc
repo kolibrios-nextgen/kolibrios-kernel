@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8051 $
-
 ; HDD and CD search
 
         cmp     [ecx+IDE_DATA.ProgrammingInterface], 0

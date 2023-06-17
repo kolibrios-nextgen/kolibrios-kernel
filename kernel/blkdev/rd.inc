@@ -6,8 +6,6 @@
 ;; RAMDISK functions                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 8064 $
-
 iglobal
 align 4
 ramdisk_functions:

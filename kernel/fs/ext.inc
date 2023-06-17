@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 6933 $
-
 ; EXT external functions
 ;   in:
 ; ebx -> parameter structure of sysfunc 70

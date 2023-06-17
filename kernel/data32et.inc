@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 9715 $
-
 
   boot_initirq       latin1   'Algväärtustan IRQ',0
   boot_picinit       latin1   'Algväärtustan PIC',0

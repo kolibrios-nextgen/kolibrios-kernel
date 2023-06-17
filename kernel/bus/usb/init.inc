@@ -5,8 +5,6 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-$Revision: 9571 $
-
 
 ; Initialization of the USB subsystem.
 ; Provides usb_init procedure, includes all needed files.

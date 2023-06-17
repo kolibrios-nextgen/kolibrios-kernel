@@ -5,15 +5,7 @@
 ;;                                                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-__REV = 0
-
-macro $Revision a {
-  match =: Num =$,a \{
-    if __REV < Num
-      __REV = Num
-    end if
-  \}
-}
+include "rev.inc"
 
 macro ignore_empty_revision_keyword {
   ; svn keywords are neither substituted by git-svn nor catched by $Revision
@@ -21,9 +13,6 @@ macro ignore_empty_revision_keyword {
   macro $Rev#ision$ \{\}
 }
 ignore_empty_revision_keyword
-
-$Revision: 9715 $
-
 
 ;// mike.dld, 2006-29-01 [
 

@@ -13,8 +13,6 @@
 
 ; Para modificar éste archivo es necesario abrirlo con codificación CP850
 
-$Revision: 8224 $
-
 
 d80x25_bottom:
           cp850    '║ KolibriOS viene ABSOLUTAMENTE SIN GARANTíA. Lee el archivo COPYING por más   ║'

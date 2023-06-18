@@ -945,26 +945,20 @@ Remarks:
 Parameters:
   * eax = 18 - function number
   * ebx = 13 - subfunction number
-  * ecx = pointer to the buffer (not less than 16 bytes), where
+  * ecx = pointer to the buffer (not less than 44 bytes), where
     the information will be placed
 Returned value:
   * function does not return value
     but if pointer in ecx is illegal, for example,
-    [ecx, ecx + 9) region intersects with kernel memory,
+    [ecx, ecx + 44) region intersects with kernel memory,
     then function returns -1
-Remarks:
-  * At the moment only the part of the buffer by a size
-    9 bytes is used. Nevertheless it is recommended to use
-    16 byte buffer for the future compatibility, in the future
-    some fields can be added.
+
 Structure of the buffer:
 db a,b,c,d for version a.b.c.d
-db 0: reserved
-dd REV - kernel SVN revision number
+db HASH - the full kernel git hash (WARNING: it's not null-terminated!)
 For Kolibri 0.7.7.0+ kernel:
 db 0,7,7,0
-db 0
-dd 1675
+db 'abcd01...'
 
 ---------------------- Constants for registers: ----------------------
   eax - SF_SYSTEM (18)

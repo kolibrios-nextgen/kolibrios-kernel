@@ -21,19 +21,41 @@ def is_linux():
 def  is_osx():
     return True if sys.platform == "darwin" else False
 
-class TestTimeoutException(Exception):
-    pass
+class TestException(Exception):
+    def __init__(self, error_kind, message, qemu_cmd):
+        self.error_kind = error_kind
+        super().__init__(message)
+        self.qemu_cmd = qemu_cmd
 
-class TestFailureException(Exception):
-    pass
+    def kind(self):
+        return self.error_kind
+
+    def cmd(self):
+        return self.qemu_cmd
+
+class TestException_Timeout(TestException):
+    def __init__(self, message, qemu_cmd):
+        super().__init__("TIMEOUT", message, qemu_cmd)
+
+class TestException_Failure(TestException):
+    def __init__(self, message, qemu_cmd):
+        super().__init__("FAILURE", message, qemu_cmd)
 
 class Qemu:
     def __init__(self, popen, debug_log):
         self.popen = popen
         # Qemu needs time to create debug.log file
-        while not os.path.exists(debug_log):
-            self.wait()
+        while not os.path.exists(debug_log) and self.qemu_is_alive():
+            self.wait(0.250)
+        self.assert_qemu_not_died("waiting for the debug log file creation")
         self.debug = open(debug_log, "rb")
+
+    def qemu_is_alive(self):
+        return self.popen.poll() == None
+
+    def assert_qemu_not_died(self, while_):
+        if not self.qemu_is_alive():
+            raise TestException_Failure(f"Qemu has finished while {while_}.", ' '.join(self.popen.args))
 
     def wait_for_debug_log(self, needle, timeout = 1):
         needle = bytes(needle, "utf-8")
@@ -42,6 +64,7 @@ class Qemu:
 
         # While no timeout, read and search logs
         while timeit.default_timer() - start < timeout:
+            # TODO: Non-blocking read.
             log += self.debug.read(1)
             if needle in log:
                 return
@@ -57,7 +80,9 @@ class Qemu:
             if len(log) > len(needle) * 2:
                 log = log[len(needle):]
 
-        self.timeout()
+            self.assert_qemu_not_died("waiting for the debug log")
+
+        self.timeout("waiting for the debug log")
 
     def kill(self):
         if is_win32():
@@ -66,15 +91,11 @@ class Qemu:
         else:
             os.killpg(os.getpgid(self.popen.pid), signal.SIGTERM)
 
-    def failure(self):
+    def timeout(self, while_):
         self.kill()
-        raise TestFailureException()
+        raise TestException_Timeout(while_, ' '.join(self.popen.args))
 
-    def timeout(self):
-        self.kill()
-        raise TestTimeoutException()
-
-    def wait(self, seconds = 0.25):
+    def wait(self, seconds):
         time.sleep(seconds)
 
 def run_qemu(root_dir, test_dir, debug_log):
@@ -91,7 +112,6 @@ def run_qemu(root_dir, test_dir, debug_log):
     flags += f"-drive format=raw,file={test_dir}/kolibri_test.img,index=0,if=floppy -boot a "
     flags += "-vga vmware "
     flags += "-net nic,model=rtl8139 -net user "
-    flags += "-soundhw ac97 "
     if is_win32():
         qemu_full_path = shutil.which(qemu_command)
         qemu_directory = os.path.dirname(qemu_full_path)

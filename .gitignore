@@ -18,3 +18,7 @@ lang.inc
 *.efi
 *.krn
 *.f32
+*.img
+__pycache__
+*.log
+

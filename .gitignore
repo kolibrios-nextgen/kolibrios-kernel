@@ -1,3 +1,5 @@
+# Global ignoring of different binaries and another temporary files
+
 *.mnt*
 *.raw
 *.iso
@@ -16,3 +18,7 @@ lang.inc
 *.efi
 *.krn
 *.f32
+*.img
+__pycache__
+*.log
+

@@ -1,0 +1,8 @@
+# Default assignment
+* @turbocat2001 @rgimad
+
+# Kernel testing framework - @mkostoevr
+/kernel/test @mkostoevr
+/kernel/runtests.py @mkostoevr
+/kernel/asmxygen.py @mkostoevr
+/kernel/docs/doxygen @mkostoevr
